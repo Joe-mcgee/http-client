@@ -1,6 +1,6 @@
 const https = require('https');
-
-function getAndPrintHTML() {
+;
+function getAndPrintHTML () {
 
   var requestOptions = {
     host: 'sytantris.github.io',
@@ -8,17 +8,15 @@ function getAndPrintHTML() {
   };
 
   https.get(requestOptions, function(response) {
+    var buffer = [];
 
     response.on('data', function(data) {
-      var buffer = [];
       buffer.push(data)
-
-      response.on('end', function() {
-        console.log(buffer)
-      })
     })
 
-
+    response.on('end', function() {
+      console.log(buffer[0].toString())
+    })
 
   })
 
